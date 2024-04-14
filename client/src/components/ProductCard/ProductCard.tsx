@@ -5,26 +5,45 @@ import {
     MDBCardText,
     MDBCardImage,
     MDBBtn,
+    MDBCardFooter,
+    MDBRow,
+    MDBCol,
+    MDBTypography,
 } from 'mdb-react-ui-kit'
+import { IProduct } from '../../types/IProduct'
+import styles from './ProductCard.module.scss'
 
-export function ProductCard() {
+interface ProductCardProps {
+    product: IProduct
+}
+
+const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     return (
-        <div>
-            <MDBCard>
-                <MDBCardImage
-                    src="https://mdbootstrap.com/img/new/standard/nature/184.webp"
-                    position="top"
-                    alt="..."
-                />
-                <MDBCardBody>
-                    <MDBCardTitle>Card title</MDBCardTitle>
-                    <MDBCardText>
-                        Some quick example text to build on the card title and
-                        make up the bulk of the card's content.
-                    </MDBCardText>
-                    <MDBBtn href="#">Button</MDBBtn>
-                </MDBCardBody>
-            </MDBCard>
-        </div>
+        <MDBCard className={`${styles.cardContainer} shadow-3-strong p-0 m-4`}>
+            <MDBCardImage
+                src={`http://localhost:5000/image/pizzas/${product.image}.webp`}
+                position="top"
+                alt={product.name}
+                className={styles.cardImage}
+            />
+            <MDBCardBody>
+                <MDBCardTitle>{product.name}</MDBCardTitle>
+                <MDBCardText>{product.description}</MDBCardText>
+            </MDBCardBody>
+            <MDBCardFooter>
+                <MDBRow className="justify-content-between align-items-center">
+                    <MDBCol>
+                        <MDBTypography tag="strong">
+                            {`${product.price} $`}
+                        </MDBTypography>
+                    </MDBCol>
+                    <MDBCol>
+                        <MDBBtn>Add to cart</MDBBtn>
+                    </MDBCol>
+                </MDBRow>
+            </MDBCardFooter>
+        </MDBCard>
     )
 }
+
+export default ProductCard

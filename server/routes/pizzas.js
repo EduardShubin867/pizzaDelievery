@@ -3,7 +3,8 @@ const router = express.Router()
 const Pizza = require('../models/Pizza')
 
 router.get('/', async (req, res) => {
-    const { page = 1, limit = 10 } = req.query
+    console.log(req.query)
+    const { page = 1, limit = 12 } = req.query
     try {
         const pizzas = await Pizza.find()
             .limit(limit * 1)

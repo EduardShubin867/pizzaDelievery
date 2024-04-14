@@ -1,5 +1,4 @@
-import { NavLink } from 'react-router-dom'
-import { Outlet } from 'react-router-dom'
+import { NavLink, Outlet, Link } from 'react-router-dom'
 import {
     MDBNavbar,
     MDBNavbarNav,
@@ -29,7 +28,7 @@ const Layout = () => (
             </MDBContainer>
         </MDBNavbar>
 
-        <main>
+        <main className="py-3">
             <Outlet />
         </main>
 

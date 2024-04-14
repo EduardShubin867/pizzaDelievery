@@ -5,7 +5,7 @@ import { CardsList } from '../components/CardsList/CardsList'
 export function Home() {
     return (
         <MDBRow>
-            <MDBCol sm="4" className="h-25">
+            <MDBCol sm="12" className="h-25">
                 <CardsList />
             </MDBCol>
         </MDBRow>

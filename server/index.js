@@ -1,8 +1,9 @@
 const express = require('express')
 const mongoose = require('mongoose')
+const cors = require('cors')
 const pizzaRoutes = require('./routes/pizzas')
 const toppingRoutes = require('./routes/toppings')
-const cors = require('cors')
+const imageRoute = require('./routes/images')
 
 const app = express()
 const port = 5000
@@ -24,6 +25,7 @@ app.use(express.json())
 
 app.use('/pizzas', pizzaRoutes)
 app.use('/toppings', toppingRoutes)
+app.use('/', imageRoute)
 
 app.listen(port, () => {
     console.log(`-----------------------------------------------------
